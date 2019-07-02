@@ -105,7 +105,7 @@ const styles = StyleSheet.create({
 
 <details>
 
-<summary>Game Choices definition</summary>
+<summary>Rock, Paper, & Scissors Choices</summary>
 
 ```javascript
 const CHOICES = [
@@ -128,7 +128,7 @@ const CHOICES = [
 
 ![pwd](./assets3/1c.png)
 
-We should see that nothings changed.
+We should see that nothings changed. That's ok, we're just setting up some stuff to make our lives easier in just a few moments.
 
 > **Key Points** 🔑📝
 
@@ -144,6 +144,8 @@ This prompt will **change** over time following the **state** of the **app**.
 
 In other words, the prompt is **stateful**.
 
+#### We need to introduce state to our app
+
 **A)** Import a required dependency from React, `useState`, which allows us to introduce state to our functional components.
 
 ```jsx
@@ -156,7 +158,7 @@ import React, { useState } from 'react';
 const [gamePrompt, setGamePrompt] = useState('Choose your weapon!');
 ```
 
-The `useState` call returns an array. It's argument is the initial value of the first index of the `array`, the **state variable**. Our state variable is defined as `gamePrompt` in this case. The second is called a [setter method](https://javascriptplayground.com/es5-getters-setters/).
+The `useState` call returns an array. It's argument is the initial value of the first index of the `array`, a **state variable**. Our state variable is defined as `gamePrompt` in this case. The second is called a [setter method](https://javascriptplayground.com/es5-getters-setters/).
 
   - The **1st** index of the array is a variable that **holds** state.
   - The **2nd** index of the array is a function that **changes** state.
@@ -171,7 +173,7 @@ We should now see something like this below
 
 ![pwd](./assets3/2c.png)
 
-**D)** Confirm value of `gamePrompt` is coming from the argument of `useState`.
+**D)** Confirm the value of `gamePrompt` is coming from the argument of `useState`.
 
 Change the argument to `useState` and reload your simulator. You should see it changes to whatever you added, in my case, **Fire!**.
 
@@ -186,7 +188,7 @@ Change the argument to `useState` and reload your simulator. You should see it c
 
 ---
 
-### **Milestone 3 🛣🏃 Add buttons which allow user to make a selection**
+### **Milestone 3 🛣🏃 Add buttons which allow user to make selection**
 
 **A)** Import `TouchableOpacity` from React Native.
 
@@ -233,7 +235,7 @@ We should now see something happening in our debugging console, confirming our `
 
 ![pwd](./assets3/3c.gif)
 
-**D)** Create a new component, `Button`, which to reuse this code.
+**D)** Create a new component, `Button`, so we can use this code again for the three available choices a user can make, `Rock`, `Paper`, & `Scissors`.
 
 ```jsx
 const Button = (props) => (
@@ -256,7 +258,7 @@ const onPress = (userChoice) => {
 }
 ```
 
-**F)** Render all possible choices to the screen using `map`. Pass it three props, `key`, `name`, `onPress`. The `key` is for [performance reasons](https://reactjs.org/docs/lists-and-keys.html). The other two props are used in the definition of`Button` we defined earlier.
+**F)** Render all possible choices to the screen using `map`. Pass it three props, `key`, `name`, `onPress`. The `key` is for [performance reasons](https://reactjs.org/docs/lists-and-keys.html). The other two props are consumed in the body of `Button` we defined earlier.
 
 ```javascript
 {CHOICES.map(choice => {
@@ -270,13 +272,15 @@ const onPress = (userChoice) => {
 })}
 ```
 
-We should now see the button pressed logged to the console, *excellent*.
+We should now see the value console logged is different when the user presses on different buttons, *excellent*.
 
 ![pwd](./assets3/3f.gif)
 
 > **Key Points** 🔑📝
 
 - Things that done change should be defined in capitalized letters. For example, our Rock, Paper, Scissors as `CHOICES`.
+
+- It's ok to first write code in the body of a function, then extract it out later when we realized this code would be repeated otherwise. Consider how we got to the `Button` component. 1st we made sure it worked. 2nd, we rendered multiple of them to the screen by defining a new component and then passing the appropriate props.
 
 ---
 
@@ -326,7 +330,7 @@ We should now see the button pressed logged to the console, *excellent*.
 
 ![pwd](./assets3/4b.png)
 
-**C)** Refactor the cards to a `ChoiceCard` component. We also define it requiring two props, `player` & `choice` so that we can have the card **behave differently** depending on the props/arguments passed to it. Notice the [ES6 destructuring](https://davidwalsh.name/destructuring-function-arguments). We also use some free ES6 syntax to make our `title` capitalized.
+**C)** Refactor the cards `jsx` to a `ChoiceCard` component.
 
 ```jsx
 const ChoiceCard = ({ player, choice: { uri, name }}) => {
@@ -350,7 +354,13 @@ const ChoiceCard = ({ player, choice: { uri, name }}) => {
 };
 ```
 
-**D)** Render these two cards with their required props, `player` & `choice`.
+We define it to require two props, `player` & `choice` so that we can have the card **behave differently** depending on the props/arguments passed to it.
+
+- Notice the [ES6 destructuring](https://davidwalsh.name/destructuring-function-arguments).
+
+- Notice we use free ES6 functions to capitalize our `title`.
+
+**D)** Render these two cards with their required props, `player` & `choice` in the body of `App`.
 
 ```jsx
 <View style={styles.choicesContainer}>
@@ -384,7 +394,7 @@ const [userChoice, setUserChoice] = useState({});
 const [computerChoice, setComputerChoice] = useState({});
 ```
 
-**B)** Refactor `onPress` to contain logic which handles determining a round outcome and setting both `computerChoice` & `userChoice` state variables after a use has made their choice.
+**B)** Refactor `onPress` to handle determining a round outcome and **setting** both `computerChoice` & `userChoice` state variables after the player has made a choice. What does the first line odf this function's body do?
 
 ```jsx
   const onPress = (playerChoice) => {
@@ -396,8 +406,10 @@ const [computerChoice, setComputerChoice] = useState({});
     setGamePrompt(result);
     setUserChoice(newUserChoice);
     setComputerChoice(newComputerChoice);
-  };  
+  };
 ```
+
+> **Tip** 💡: Don't be afraid to console log the values here to see how these variables change when the user presses our `Button` component.
 
 **C)** Define the function `getRoundOutcome()` we call in the body of `onPress`. Notice what it returns and how it defines it's local variable `computerChoice`.
 
