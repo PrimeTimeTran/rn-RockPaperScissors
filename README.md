@@ -394,7 +394,7 @@ const [userChoice, setUserChoice] = useState({});
 const [computerChoice, setComputerChoice] = useState({});
 ```
 
-**B)** Refactor `onPress` to handle determining a round outcome and **setting** both `computerChoice` & `userChoice` state variables after the player has made a choice. What does the first line odf this function's body do?
+**B)** Refactor `onPress` to handle determining a round outcome and **setting** both `computerChoice` & `userChoice` state variables after the player has made a choice. Heads up, consider what the line with `getRoundOutcome` is doing.
 
 ```jsx
   const onPress = (playerChoice) => {
