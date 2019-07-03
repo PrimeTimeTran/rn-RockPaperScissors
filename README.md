@@ -1,4 +1,4 @@
-# WK5 - HW - **Rock, Paper, Scissors 🧗‍🗞️✂️**
+# WK3 - HW - **Rock, Paper, Scissors 🧗‍🗞️✂️**
 
 ## Introduction 🌟
 
