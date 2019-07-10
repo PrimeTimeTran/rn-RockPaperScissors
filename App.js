@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { 
+import {
   Text,
   View,
   Image,
@@ -97,7 +97,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 35, color: getResultColor() }}>{gamePrompt}</Text>
+      <Text style={{ fontSize: 35, color: getResultColor() }}>
+        {gamePrompt}
+      </Text>
       <View style={styles.choicesContainer}>
         <ChoiceCard 
           player="Player"

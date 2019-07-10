@@ -1,10 +1,10 @@
-# WK3 - HW - **Rock, Paper, Scissors 🧗‍🗞️✂️**
+# Week 3 - Homework - **Rock, Paper, Scissors 🧗‍🗞️✂️**
 
 ## Introduction 🌟
 
 Let's build a Rock, Paper, Scissors game app 📱 using [React Native](https://facebook.github.io/react-native/) & [Expo](https://expo.io/). Our app will help users have fun!
 
-![pwd](./assets3/intro.gif)
+![pwd](https://i.imgur.com/7Gfsv9e.gif)
 
 ### Features 🎯🥇🏆
 
@@ -26,7 +26,7 @@ Let's build a Rock, Paper, Scissors game app 📱 using [React Native](https://f
 
 **A)** Use `expo init` command to create a new project. I'm calling mine `rn-rockpaperscissors`.
 
-![pwd](./assets3/1a.png)
+![pwd](https://i.imgur.com/gKAnsUB.png)
 
 **B)** Add necessary styles.
 
@@ -119,14 +119,15 @@ const CHOICES = [
   },
   {
     name: 'scissors',
-    uri: 'http://pluspng.com/img-png/png-hairdressing-scissors-beauty-salon-scissors-clipart-4704.png'
-  },
+    uri:
+      'http://pluspng.com/img-png/png-hairdressing-scissors-beauty-salon-scissors-clipart-4704.png'
+  }
 ];
 ```
 
 </details>
 
-![pwd](./assets3/1c.png)
+![pwd](https://i.imgur.com/iNFOOfJ.jpg)
 
 We should see that nothings changed. That's ok, we're just setting up some stuff to make our lives easier in just a few moments.
 
@@ -160,8 +161,8 @@ const [gamePrompt, setGamePrompt] = useState('Choose your weapon!');
 
 The `useState` call returns an array. It's argument is the initial value of the first index of the `array`, a **state variable**. Our state variable is defined as `gamePrompt` in this case. The second is called a [setter method](https://javascriptplayground.com/es5-getters-setters/).
 
-  - The **1st** index of the array is a variable that **holds** state.
-  - The **2nd** index of the array is a function that **changes** state.
+- The **1st** index of the array is a variable that **holds** state.
+- The **2nd** index of the array is a function that **changes** state.
 
 **C)** Add the `gamePrompt` piece of state to our `App` component's body.
 
@@ -171,13 +172,13 @@ The `useState` call returns an array. It's argument is the initial value of the 
 
 We should now see something like this below
 
-![pwd](./assets3/2c.png)
+![pwd](https://i.imgur.com/mKKAwPr.jpg)
 
 **D)** Confirm the value of `gamePrompt` is coming from the argument of `useState`.
 
 Change the argument to `useState` and reload your simulator. You should see it changes to whatever you added, in my case, **Fire!**.
 
-![pwd](./assets3/2d.png)
+![pwd](https://i.imgur.com/lEXhYEE.jpg)
 
 > **Key Points** 🔑📝
 
@@ -193,30 +194,24 @@ Change the argument to `useState` and reload your simulator. You should see it c
 **A)** Import `TouchableOpacity` from React Native.
 
 ```jsx
-import {
-  TouchableOpacity,
-} from 'react-native';
+import { TouchableOpacity } from 'react-native';
 ```
 
 **B)** Render a single `TouchableOpacity` in the body of `App`'s return with one of the selection choices.
 
 ```jsx
-<TouchableOpacity
-  style={styles.buttonStyle}
->
-  <Text style={styles.buttonText}>
-    Rock
-  </Text>
+<TouchableOpacity style={styles.buttonStyle}>
+  <Text style={styles.buttonText}>Rock</Text>
 </TouchableOpacity>
 ```
 
 We should now see a screen that looks something like this.
 
-![pwd](./assets3/3b.png)
+![pwd](https://i.imgur.com/Q6AzCEL.jpg)
 
 However, we have a problem, when we click our `TouchableOpacity`, nothing happens.
 
-![pwd](./assets3/3b.gif)
+![pwd](https://i.imgur.com/KDMT44s.gif)
 
 **C)** Pass an `onPress` prop to `TouchableOpacity`, the prop being a function which console.logs.
 
@@ -225,20 +220,18 @@ However, we have a problem, when we click our `TouchableOpacity`, nothing happen
   onPress={() => console.log('Mic check, 1 2, 1 2')}
   style={styles.buttonStyle}
 >
-  <Text style={styles.buttonText}>
-    Rock
-  </Text>
+  <Text style={styles.buttonText}>Rock</Text>
 </TouchableOpacity>
 ```
 
 We should now see something happening in our debugging console, confirming our `TouchableOpacity` is working.
 
-![pwd](./assets3/3c.gif)
+![pwd](https://i.imgur.com/Pvkx0E2.gif)
 
 **D)** Create a new component, `Button`, so we can use this code again for the three available choices a user can make, `Rock`, `Paper`, & `Scissors`.
 
 ```jsx
-const Button = (props) => (
+const Button = props => (
   <TouchableOpacity
     style={styles.buttonStyle}
     onPress={() => props.onPress(props.name)}
@@ -253,28 +246,24 @@ const Button = (props) => (
 **E)** Define the `onPress` function which we'll pass to the `Button` component.
 
 ```jsx
-const onPress = (userChoice) => {
-  console.log('userChoice', userChoice)
-}
+const onPress = userChoice => {
+  console.log('userChoice', userChoice);
+};
 ```
 
 **F)** Render all possible choices to the screen using `map`. Pass it three props, `key`, `name`, `onPress`. The `key` is for [performance reasons](https://reactjs.org/docs/lists-and-keys.html). The other two props are consumed in the body of `Button` we defined earlier.
 
 ```javascript
-{CHOICES.map(choice => {
-  return (
-    <Button
-      key={choice.name}
-      name={choice.name}
-      onPress={onPress}
-    />
-  )
-})}
+{
+  CHOICES.map(choice => {
+    return <Button key={choice.name} name={choice.name} onPress={onPress} />;
+  });
+}
 ```
 
-We should now see the value console logged is different when the user presses on different buttons, *excellent*.
+We should now see the value console logged is different when the user presses on different buttons, _excellent_.
 
-![pwd](./assets3/3f.gif)
+![pwd](https://i.imgur.com/EudO5Gt.gif)
 
 > **Key Points** 🔑📝
 
@@ -304,7 +293,7 @@ We should now see the value console logged is different when the user presses on
   <Image
     source={{ uri: 'http://pngimg.com/uploads/stone/stone_PNG13622.png' }}
     resizeMode="contain"
-    style={styles.choiceImage} 
+    style={styles.choiceImage}
   />
   <Text style={styles.choiceCardTitle}>
     Rock
@@ -328,27 +317,19 @@ We should now see the value console logged is different when the user presses on
 
 #### We should now see the two cards which hold the user/computer selections.
 
-![pwd](./assets3/4b.png)
+![pwd](https://i.imgur.com/05ceUuy.jpg)
 
 **C)** Refactor the cards `jsx` to a `ChoiceCard` component.
 
 ```jsx
-const ChoiceCard = ({ player, choice: { uri, name }}) => {
+const ChoiceCard = ({ player, choice: { uri, name } }) => {
   const title = name && name.charAt(0).toUpperCase() + name.slice(1);
 
   return (
     <View style={styles.choiceContainer}>
-      <Text style={styles.choiceDescription}>
-        {player}
-      </Text>
-      <Image
-        source={{ uri }}
-        resizeMode="contain"
-        style={styles.choiceImage}
-      />
-      <Text style={styles.choiceCardTitle}>
-        {title}
-      </Text>
+      <Text style={styles.choiceDescription}>{player}</Text>
+      <Image source={{ uri }} resizeMode="contain" style={styles.choiceImage} />
+      <Text style={styles.choiceCardTitle}>{title}</Text>
     </View>
   );
 };
@@ -364,21 +345,16 @@ We define it to require two props, `player` & `choice` so that we can have the c
 
 ```jsx
 <View style={styles.choicesContainer}>
-  <ChoiceCard
-    player="Player"
-    choice={CHOICES[0]}
-  />
+  <ChoiceCard player="Player" choice={CHOICES[0]} />
   <Text style={{ color: '#250902' }}>vs</Text>
-  <ChoiceCard
-    player="Computer"
-    choice={CHOICES[0]}
-  />
+  <ChoiceCard player="Computer" choice={CHOICES[0]} />
 </View>
 ```
 
-We should now see `App`s body cleaner, as well as the same functionality we had before, *excellent*.
+We should now see `App`s body cleaner, as well as the same functionality we had before, _excellent_.
 
-![pwd](./assets3/4d.gif)
+![pwd](https://i.imgur.com/9e1q9V7.gif)
+
 > **Key Points** 🔑📝
 
 - It's **ok to hardcode** to get the layout right.
@@ -397,16 +373,16 @@ const [computerChoice, setComputerChoice] = useState({});
 **B)** Refactor `onPress` to handle determining a round outcome and **setting** both `computerChoice` & `userChoice` state variables after the player has made a choice. Heads up, consider what the line with `getRoundOutcome` is doing.
 
 ```jsx
-  const onPress = (playerChoice) => {
-    const [result, compChoice] = getRoundOutcome(playerChoice);
+const onPress = playerChoice => {
+  const [result, compChoice] = getRoundOutcome(playerChoice);
 
-    const newUserChoice = CHOICES.find(choice => choice.name === playerChoice);
-    const newComputerChoice = CHOICES.find(choice => choice.name === compChoice);
+  const newUserChoice = CHOICES.find(choice => choice.name === playerChoice);
+  const newComputerChoice = CHOICES.find(choice => choice.name === compChoice);
 
-    setGamePrompt(result);
-    setUserChoice(newUserChoice);
-    setComputerChoice(newComputerChoice);
-  };
+  setGamePrompt(result);
+  setUserChoice(newUserChoice);
+  setComputerChoice(newComputerChoice);
+};
 ```
 
 > **Tip** 💡: Don't be afraid to console log the values here to see how these variables change when the user presses our `Button` component.
@@ -414,19 +390,19 @@ const [computerChoice, setComputerChoice] = useState({});
 **C)** Define the function `getRoundOutcome()` we call in the body of `onPress`. Notice what it returns and how it defines it's local variable `computerChoice`.
 
 ```jsx
-const getRoundOutcome = (userChoice) => {
+const getRoundOutcome = userChoice => {
   const computerChoice = randomComputerChoice().name;
   let result;
 
   if (userChoice === 'rock') {
     result = computerChoice === 'scissors' ? 'Victory!' : 'Defeat!';
-  };
+  }
   if (userChoice === 'paper') {
     result = computerChoice === 'rock' ? 'Victory!' : 'Defeat!';
-  };
+  }
   if (userChoice === 'scissors') {
     result = computerChoice === 'paper' ? 'Victory!' : 'Defeat!';
-  };
+  }
 
   if (userChoice === computerChoice) result = 'Tie game!';
   return [result, computerChoice];
@@ -436,18 +412,19 @@ const getRoundOutcome = (userChoice) => {
 **D)** Define the function `randomComputerChoice()` we call in the body of `getRoundOutcome()`. This is simple a function which selects randomly from an `array`.
 
 ```jsx
-const randomComputerChoice = () => CHOICES[Math.floor(Math.random() * CHOICES.length)];
+const randomComputerChoice = () =>
+  CHOICES[Math.floor(Math.random() * CHOICES.length)];
 ```
 
 **E)** Refactor our `ChoiceCard`s render to pass the `userChoice` & `computerChoice` state variables as props.
 
 ```jsx
-<ChoiceCard 
+<ChoiceCard
   player="Player"
   choice={userChoice}
 />
 <Text style={{ color: '#250902' }}>vs</Text>
-<ChoiceCard 
+<ChoiceCard
   player="Computer"
   choice={computerChoice}
 />
@@ -455,7 +432,7 @@ const randomComputerChoice = () => CHOICES[Math.floor(Math.random() * CHOICES.le
 
 **E)** Check to see if the application is behaving as expected.
 
-![pwd](./assets3/5e.gif)
+![pwd](https://i.imgur.com/sO9VYxd.gif)
 
 If everything went well, we should see something like this.
 
@@ -475,7 +452,7 @@ const getResultColor = () => {
 <Text style={{ fontSize: 35, color: getResultColor() }}>{gamePrompt}</Text>
 ```
 
-![pwd](./assets3/5f.gif)
+![pwd](https://i.imgur.com/EZBcgwf.gif)
 Our app should now behave correctly including changing `gamePrompt`'s color when the player has achieved `Victory!`, `Defeat!`, or `Tied!`
 
 > **Key Points** 🔑📝
@@ -490,11 +467,15 @@ Our app should now behave correctly including changing `gamePrompt`'s color when
 
 ### Accomplishments 🥇🏆💯
 
-- [X] User can select Rock, Paper, or Scissors
-- [X] User can see image of their selection
-- [X] User can see text of their selection
-- [X] User can see image of computer's selection
-- [X] User can see text of computer's selection
-- [X] User can see prompt indicating who won the round
+- [x] User can select Rock, Paper, or Scissors
+- [x] User can see image of their selection
+- [x] User can see text of their selection
+- [x] User can see image of computer's selection
+- [x] User can see text of computer's selection
+- [x] User can see prompt indicating who won the round
 
 ### Rockets 🚀
+
+- [ ] User can see how many games they've played total
+- [ ] User can see how games they've won, lose, tied.
+- [ ] User can see the percentages of wins, losses, and tie games they've had.
