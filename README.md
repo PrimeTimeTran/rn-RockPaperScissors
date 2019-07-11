@@ -430,13 +430,13 @@ const randomComputerChoice = () =>
 />
 ```
 
-**E)** Check to see if the application is behaving as expected.
+**F)** Check to see if the application is behaving as expected.
 
 ![pwd](https://i.imgur.com/sO9VYxd.gif)
 
 If everything went well, we should see something like this.
 
-**F)** Define a function which returns appropriate color for the `gamePrompt` state variable.
+**G)** Define a function which returns appropriate color for the `gamePrompt` state variable.
 
 ```jsx
 const getResultColor = () => {
@@ -446,7 +446,7 @@ const getResultColor = () => {
 };
 ```
 
-**F)** Call the function in our `gamePrompt`'s style when it renders.
+**H)** Call the function in our `gamePrompt`'s style when it renders.
 
 ```jsx
 <Text style={{ fontSize: 35, color: getResultColor() }}>{gamePrompt}</Text>
